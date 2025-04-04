@@ -1,0 +1,57 @@
+Welcome to Students DB
+<br /><br/>
+
+<!-- this is html comments  -->
+
+
+{#  DB is {{ db[2] }}  one more example {{ db.2 }} #}
+
+{#
+my DB  my keys is  {{  db.keys() }} and my values is {{ db.values() }}
+<br/></br />
+#}
+
+record starts from here : <br /> <br />
+
+<table border='5' width='90%' align='center'>
+<tr>
+<th>Record ID</th>
+<th>Student Name</th>
+<th>Student Mobile</th>
+<th>Student Courses</th>
+<th>Star Students</th>
+</tr>
+
+{%  for id, record in db.items() %}
+
+	<tr>
+	<td>record {{ id }}</td> 
+	<td>{{ record.name }}</td>
+	<td>{{ record.mobile }}</td>
+	<td>
+		<ul>
+		{% for i in record.courses %}
+			<li>{{ i }}</li>
+		{% endfor %}
+		</ul>
+
+	</td>
+
+	<td>
+		{% if record.courses | length  >= 2 %}
+			Star Student &#128509;
+		{% else %}
+			Will be Star
+		{% endif %}
+
+	</td>
+	</tr>
+
+{% endfor %}
+
+</table>
+
+
+<br /><br />
+finish page DB..
+
